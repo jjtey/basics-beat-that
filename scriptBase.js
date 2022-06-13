@@ -21,10 +21,7 @@ var main = function (input) {
     }
     return `Please input a number 2 and above!`;
   }
-  if (playerRolls.length == 0) {
-    //as per in-class: to prevent rolling dices for every instance
-    collateRolls(noOfPlayers, noOfDice);
-  }
+  collateRolls(noOfPlayers, noOfDice);
   for (player = 0; player < noOfPlayers; player += 1) {
     if (userChoice == "") {
       if (playerRolls[player].length == noOfDice) {
@@ -35,9 +32,7 @@ var main = function (input) {
         }.<br> Please input above, your desired digit in the <b> "ones" place <b>.`;
       }
     }
-    userChoice = input;
-    console.log(playerRolls[0]);
-    console.log(userChoice);
+    userChoice = input; //need to lock in elements in array (currently contains a random num generator)
     if (playerRolls[player].includes(userChoice)) {
       playerRolls[player].splice(indexOf(userChoice), 1);
       userChoice = "";
