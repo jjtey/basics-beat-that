@@ -36,8 +36,13 @@ var main = function (input) {
     chooseMode(input);
     return modeChosen + `<br><br><b>Press "Submit" to find out who won!</b> `;
   }
-  if (playerScore == 0) {
+  if (winningCriteria == "highest") {
     genHighestNumber(noOfPlayers, noOfDice);
+    return playerScore;
+  } else if (winningCriteria == "lowest") {
+    playerRolls[player].sort();
+    playerRolls[player].reverse();
+    genLowestNumber(noOfPlayers, noOfDice);
     return playerScore;
   }
 };
@@ -88,8 +93,17 @@ function genHighestNumber(noOfPlayers, noOfDice) {
   }
 }
 
-console.log(main(2));
-console.log(main(2));
-console.log(main());
-console.log(main("highest"));
-console.log(main());
+function genLowestNumber(noOfPlayers, noOfDice) {
+  for (player = 1; player <= noOfPlayers; player += 1) {
+    console.log(playerRolls[player]);
+    var sortedRolls = "";
+    for (roll = 0; roll < noOfDice; roll += 1) {
+      sortedRolls =
+        Number(sortedRolls) + Number(playerRolls[player][roll] * 10 ** roll);
+      console.log(playerRolls[1][0] * 10 ** [0]);
+      console.log(playerRolls[1][1] * 10 ** [1]);
+      console.log(playerRolls[1][2] * 10 ** [2]);
+    }
+    playerScore += `Player ${player}, the ${winningCriteria} number from your Rolls is: ${sortedRolls}! <br>`;
+  }
+}
