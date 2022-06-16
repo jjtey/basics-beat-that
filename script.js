@@ -10,19 +10,27 @@ var playerScore = "";
 var main = function (input) {
   if (!noOfPlayers) {
     //Request for number of players (>= 2)
-    if (Number.isInteger(Number(input)) && Math.round(input) >= 2) {
+    if (
+      Number.isInteger(Number(input)) &&
+      Math.round(input) >= 2 &&
+      Math.round(input) <= 10
+    ) {
       noOfPlayers = input;
-      return `Number of Players: ${noOfPlayers}.<br><br><b> Please input the number of Dice Rolls (at least 2!).<b>`;
+      return `Number of Players: ${noOfPlayers}.<br><br><b> Please input the number of Dice Rolls (between 2 and 10!).<b>`;
     }
-    return `Please input a number 2 and above for the number of Players!`;
+    return `Please input a number between 2 and 10 for the number of Players!`;
   }
   if (!noOfDice) {
     //Request for number of Dice Rolls (>=2)
-    if (Number.isInteger(Number(input)) && Math.round(input) >= 2) {
+    if (
+      Number.isInteger(Number(input)) &&
+      Math.round(input) >= 2 &&
+      Math.round(input) <= 10
+    ) {
       noOfDice = input;
       return `Number of Players: ${noOfPlayers}.<br>Number of Dice Rolls: ${noOfDice}. <br><br> Press <b>"Submit"</b> to roll your dice!`;
     }
-    return `Please input a number 2 and above for the number of Dice Rolls!`;
+    return `Please input a number between 2 and 10 for the number of Dice Rolls!`;
   }
   if (myOutputValue.length == 0) {
     //Generate rolls and request for winning Criteria
